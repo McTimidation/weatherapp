@@ -12,44 +12,44 @@
 </head>
 
 <body>
-    <div class="main">
+    <div id="main">
         <div class="container">
-            <header class="row">
-                <h1 id="headerText" class="text-center">Weather</h1>
-                <div class="input-group mb-3">
-                    <button class="btn btn-outline-secondary" type="button" id="mainBtn">Button</button>
-                    <input type="text" class="rounded" placeholder="zip code">
+            <div class="row">
+                <h1 id="headerText">Weather</h1>
+                <div>
+                    <button class="btn" type="button" id="mainBtn">Button</button>
+                    <input type="text" placeholder="zip code">
                     <button class="btn" id="resetBtn">Reset</button>
                 </div>
-            </header>
-            <div id="mainContent" class="">
+            </div>
+            <div id="mainContent" class="border">
 
                 <div class="row" id="city">
-                    <div class="rounded col-12 text-bg-info p-1 text-center" id="cityHeader">
+                    <div class="col-12" id="cityHeader">
                         <h3>City</h3>
                     </div>
-                    <div class="col text-center" id="cityText">City Name</div>
+                    <div class="col" id="cityText">City Name</div>
                 </div>
                 <div class="row" id="tempBox">
-                    <div class="rounded col-12 text-center text-bg-info p-1">
+                    <div class="col-12">
                         <h3>Temperature</h3>
                     </div>
-                    <div class="col text-center">Kelvin
+                    <div class="col">Kelvin
                         <div class="col">temp</div>
                     </div>
-                    <div class="col text-center">Fahrenheit
+                    <div class="col">Fahrenheit
                         <div class="col">temp</div>
                     </div>
-                    <div class="col text-center">Celcius
+                    <div class="col">Celcius
                         <div class="col">temp</div>
                     </div>
                 </div>
                 <div class="row" id="conditionBox">
-                    <div class="rounded col-12 text-bg-info p-1 text-center" id="cityHeader">
+                    <div class="col-12" id="cityHeader">
                         <h3>Condition</h3>
                     </div>
-                    <div class="col text-center" id="cityText">Current Weather</div>
-                    <img src="img/sunnyday.GIF">
+                    <div class="col" id="cityText">Current Weather</div>
+                    <img src="">
                 </div>
 
             </div>
