@@ -1,40 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <link href="css/style.css">
 </head>
+
 <body>
     <div class="main">
         <div class="container">
-        <header class="row"><h1 id="headerText">Weather</h1>
-            <div class="input-group mb-3">
-                <button class="btn btn-outline-secondary" type="button" id="mainBtn">Button</button>
-                <input type="text" class="" placeholder="zip code">
-              </div>
-        </header>
-        <div id="mainContent" class="">
-            <button class="btn" id="resetBtn">Reset</button>
-            <div class="row" id="city">
-                <div class="row text-bg-info p-3 text-center" id="cityHeader"><h3 class="mx-auto">City</h3></div>
-                <div class="row text-center" id="cityText">City Name</div>
-            </div>
-            <div class="row" id="tempBox">
-                <div class="row text-center text-bg-info p-3"><h3 class="mx-auto">Temperature</h3></div>
-                <div class="col text-center">Kelvin</div>
-                <div class="col text-center">Fahrenheit</div>
-                <div class="col text-center">Celcius</div>
-            </div>
+            <header class="row">
+                <h1 id="headerText" class="text-center">Weather</h1>
+                <div class="input-group mb-3">
+                    <button class="btn btn-outline-secondary" type="button" id="mainBtn">Button</button>
+                    <input type="text" class="rounded" placeholder="zip code">
+                    <button class="btn" id="resetBtn">Reset</button>
+                </div>
+            </header>
+            <div id="mainContent" class="">
 
+                <div class="row" id="city">
+                    <div class="rounded col-12 text-bg-info p-1 text-center" id="cityHeader">
+                        <h3>City</h3>
+                    </div>
+                    <div class="col text-center" id="cityText">City Name</div>
+                </div>
+                <div class="row" id="tempBox">
+                    <div class="rounded col-12 text-center text-bg-info p-1">
+                        <h3>Temperature</h3>
+                    </div>
+                    <div class="col text-center">Kelvin
+                        <div class="col">temp</div>
+                    </div>
+                    <div class="col text-center">Fahrenheit
+                        <div class="col">temp</div>
+                    </div>
+                    <div class="col text-center">Celcius
+                        <div class="col">temp</div>
+                    </div>
+                </div>
+                <div class="row" id="conditionBox">
+                    <div class="rounded col-12 text-bg-info p-1 text-center" id="cityHeader">
+                        <h3>Condition</h3>
+                    </div>
+                    <div class="col text-center" id="cityText">Current Weather</div>
+                    <img src="img/sunnyday.GIF">
+                </div>
+
+            </div>
         </div>
-    </div>
+
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+        crossorigin="anonymous"></script>
     <script src="node_modules/axios/dist/axios.min.js"></script>
     <script src="js/sandbox.js"></script>
 </body>
+
 </html>
