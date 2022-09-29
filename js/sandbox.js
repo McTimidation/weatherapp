@@ -62,14 +62,27 @@ function createElement(tag, id='', cl='',text='', parent='mainContent') {
     if (text) {
     newElement.textContent = text;
     }
-    getElementById(parent).appendChild(newElement);
+    document.getElementById(parent).appendChild(newElement);
 }
 
 function createMainContent() {
     createElement('div', 'city', 'row', '');
     createElement('div', 'cityHeader', 'col-12', '', 'city');
     createElement('h3', '', '', 'City', 'cityHeader');
-    
+    createElement('div', 'cityText', 'col', 'City Name', 'cityHeader');
+    createElement('div', 'tempBox', 'row', '');
+    createElement('div', 'tempCol', 'col-12', '', 'tempBox');
+    createElement('h3', '', '', 'Temperature', 'tempCol');
+    createElement('div', 'kelBox', 'col', 'Kelvin', 'tempBox');
+    createElement('div', 'celBox', 'col', 'Celcius', 'tempBox');
+    createElement('div', 'fahrBox', 'col', 'Fahrenheit', 'tempBox');
+    createElement('div', 'kelvinTemp', 'col', 'temp', 'kelBox');
+    createElement('div', 'celTemp', 'col', 'temp', 'celBox');
+    createElement('div', 'fahrTemp', 'col', 'temp', 'fahrBox');
+    createElement('div', 'conditionBox', 'row', '');
+    createElement('div', 'conditionHeader', 'col-12', '', 'conditionBox');
+    createElement('h3', '', '', 'Condition', 'conditionHeader');
+
 }
 
 
