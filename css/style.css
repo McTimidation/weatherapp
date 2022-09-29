@@ -1,0 +1,29 @@
+.col {
+    border-radius: 1px;
+    border-color:rgb(89, 175, 178);
+    border: solid;
+    margin-bottom: 5%;
+}
+
+#mainContent {
+    border: dotted;
+    padding:5%;
+}
+
+body, div, header {
+    text-align: center;
+}
+
+body, #main, .container {
+    height: 80vh;
+}
+
+.container {
+    align-items: center;
+}
+
+.row {
+    width: inherit;
+    margin-left: 0px;
+    margin-right: 0px;
+}
