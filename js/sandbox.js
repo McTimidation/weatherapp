@@ -1,28 +1,25 @@
 
 
-// let header = document.createElement('div').className('header container');
-// let headerText = document.createElement('h1').className('text-center');
-// let mainBtn = document.createElement('button').setAttribute('id','mainBtn');
-// let zipInput = document.createElement('input').setAttribute('type','text');
+
 let main = document.getElementById('main');
 
 // let zipInput = document.getElementById('zipInput');
-let cityURL = '';
-
-let cityText = document.getElementById('cityText');
-let kelvinTemp = document.getElementById('kelvinTemp');
-let fahrTemp = document.getElementById('fahrTemp');
-let celTemp = document.getElementById('celTemp');
-let condText = document.getElementById('condText');
+// let cityURL = '';
 
 
+// let kelvinTemp = document.getElementById('kelvinTemp');
+// let fahrTemp = document.getElementById('fahrTemp');
+// let celTemp = document.getElementById('celTemp');
+// let condText = document.getElementById('condText');
 
-function createTopElements(tag, id, clas = '') {
-    let newTag = document.createElement(tag);
-    newTag.setAttribute('id', id);
-    newTag.setAttribute('class', clas);
-    main.appendChild(newTag);
-}
+
+
+// function createTopElements(tag, id, clas = '') {
+//     let newTag = document.createElement(tag);
+//     newTag.setAttribute('id', id);
+//     newTag.setAttribute('class', clas);
+//     main.appendChild(newTag);
+// }
 
 // function createTopElements(tag, id, clas = '') {
 //     let newTag = document.createElement(tag);
@@ -40,6 +37,8 @@ function createButton(text, id) {
 }
 
 function createHeaderElements() {
+    createElement('div', 'headerRow','row','','main');
+    // createElement('div','mainContent','','','main');
     let headerRow = document.getElementById('headerRow');
     let headerText = document.createElement('h1');
     let zipInput = document.createElement('input');
@@ -52,6 +51,8 @@ function createHeaderElements() {
     headerRow.appendChild(zipInput);
     createButton('Reset','resetBtn');
 }
+
+// function createIMG()
 
 function createElement(tag, id='', cl='',text='', parent='mainContent') {
     let newElement = document.createElement(tag);
@@ -66,6 +67,7 @@ function createElement(tag, id='', cl='',text='', parent='mainContent') {
 }
 
 function createMainContent() {
+    createElement('div','mainContent','','','main');
     createElement('div', 'city', 'row', '');
     createElement('div', 'cityHeader', 'col-12', '', 'city');
     createElement('h3', '', '', 'City', 'cityHeader');
@@ -82,26 +84,34 @@ function createMainContent() {
     createElement('div', 'conditionBox', 'row', '');
     createElement('div', 'conditionHeader', 'col-12', '', 'conditionBox');
     createElement('h3', '', '', 'Condition', 'conditionHeader');
+    createElement('div', 'condText', 'col', 'Current Weather', 'conditionBox');
+
 
 }
 
 
 // need value extracted at the moment the button is clicked, not on page load.
 let zipURL = 'https://api.openweathermap.org/data/2.5/weather?zip=40511,us&appid=3800df40eae1baf24aaca89671affc52'
-function getData(a) {
-    axios.get(a)
+function getData(url) {
+    createMainContent();
+    axios.get(url)
         .then((data) => {
             displayData(data);
+            // console.log(data.data.name);
+
         })
 }
 
 function displayData(data) {
-    cityText.textContent = data.data.name;
-    let kelvin = data.data.main.temp;
-    kelvinTemp.textContent = kelvin;
-    convertToCel(kelvin);
-    convertToFahr(kelvin);
+    document.getElementById('cityText').textContent = data.data.name;
+    
+    document.getElementById('kelvinTemp').textContent = data.data.main.temp;
+    convertToCel(data.data.main.temp);
+    convertToFahr(data.data.main.temp);
+    document.getElementById('condText').textContent = data.data.weather[0].main;
     condText.textContent = data.data.weather[0].main;
+    let icon = data.data.weather[0].icon;
+    document.createElement('img').setAttribute('id', 'imgIcon').setAttribute('src',`https://openweathermap.org/img/wn/${icon}@2x.png`)
 
 }
 
@@ -114,17 +124,17 @@ function weatherData(data) {
 
 function convertToCel(num) {
     let celNum = Math.floor(num - 273.15);
-    celTemp.textContent = celNum;
+    document.getElementById('celTemp').textContent = celNum;
 }
 
 function convertToFahr(num) {
     let fahrNum = Math.floor(((num - 273.15) * (9 / 5)) + 32);
-    fahrTemp.textContent = fahrNum;
+    document.getElementById('fahrTemp').textContent = fahrNum;
 }
 
 function init() {
-    createTopElements('div', 'headerRow', 'row');
-    createTopElements('div', 'mainContent')
+    // createTopElements('div', 'headerRow', 'row');
+    // createTopElements('div', 'mainContent');
     createHeaderElements();
 }
 
