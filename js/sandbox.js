@@ -86,8 +86,6 @@ function createMainContent() {
     createElement('div', 'conditionHeader', 'col-12', '', 'conditionBox');
     createElement('h3', '', '', 'Condition', 'conditionHeader');
     createElement('div', 'condText', 'col', '', 'conditionBox');
-
-
 }
 
 
@@ -124,12 +122,12 @@ function displayData(data) {
     let imgElement = document.createElement('img');
     document.getElementById('condText').appendChild(imgElement);
     imgElement.setAttribute('src', `https://openweathermap.org/img/wn/${icon}@2x.png`)
-
+}
     // createIcon();
     // let icon = data.data.weather[0].icon;
     // document.createElement('img').setAttribute('id', 'imgIcon').setAttribute('src',`https://openweathermap.org/img/wn/${icon}@2x.png`);
     // document.getElementById('condText').appendChild('imgIcon');
-}
+
 
 // this function attempts to store data from API into an object
 function weatherData(data) {
@@ -167,8 +165,6 @@ function convertToFahr(num) {
 }
 
 function init() {
-    // createTopElements('div', 'headerRow', 'row');
-    // createTopElements('div', 'mainContent');
     createHeaderElements();
 }
 
