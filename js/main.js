@@ -65,17 +65,15 @@ function createMainContent() {
 
 // api call function to retrieve data and display it
 function getData(url) {
-    try {
         axios.get(url)
             .then((data) => {
                 createMainContent();
                 displayData(data);
             })
-        }
-    catch (err) {
-        alert('Please enter a valid zip code');
+            .catch(error => alert('Please enter a valid zip code')
+            )
     }
-}
+
 
 // function to display data on page
 function displayData(data) {
