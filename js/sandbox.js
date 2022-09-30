@@ -102,17 +102,29 @@ function getData(url) {
         })
 }
 
+// function createIcon(data) {
+//     let icon = data.data.weather[0].icon;
+//     let imgElement = document.createElement('img');
+//     imgElement.setAttribute('id', 'imgIcon');
+//     document.getElementById('condText').appendChild('imgIcon');
+//     imgElement.setAttribute('src', `https://openweathermap.org/img/wn/${icon}@2x.png`)
+// }
+
 function displayData(data) {
     document.getElementById('cityText').textContent = data.data.name;
-    
     document.getElementById('kelvinTemp').textContent = data.data.main.temp;
     convertToCel(data.data.main.temp);
     convertToFahr(data.data.main.temp);
     document.getElementById('condText').textContent = data.data.weather[0].main;
-    condText.textContent = data.data.weather[0].main;
     let icon = data.data.weather[0].icon;
-    document.createElement('img').setAttribute('id', 'imgIcon').setAttribute('src',`https://openweathermap.org/img/wn/${icon}@2x.png`)
+    let imgElement = document.createElement('img');
+    document.getElementById('condText').appendChild(imgElement);
+    imgElement.setAttribute('src', `https://openweathermap.org/img/wn/${icon}@2x.png`)
 
+    // createIcon();
+    // let icon = data.data.weather[0].icon;
+    // document.createElement('img').setAttribute('id', 'imgIcon').setAttribute('src',`https://openweathermap.org/img/wn/${icon}@2x.png`);
+    // document.getElementById('condText').appendChild('imgIcon');
 }
 
 // this function attempts to store data from API into an object
