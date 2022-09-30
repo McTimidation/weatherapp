@@ -44,7 +44,7 @@ function createHeaderElements() {
     let zipInput = document.createElement('input');
     headerRow.appendChild(headerText);
     headerText.textContent = 'Weather'
-    zipInput.setAttribute('type','text');
+    zipInput.setAttribute('type','number');
     zipInput.setAttribute('placeholder','zipcode');
     zipInput.setAttribute('class','col');
     zipInput.setAttribute('id','zipInput');
@@ -142,8 +142,12 @@ function zipCodeSubmit() {
     if (document.getElementById('mainContent')) {
     document.getElementById('mainContent').remove();
     }
-    let zipURL = `https://api.openweathermap.org/data/2.5/weather?zip=${zipInput.value},us&appid=3800df40eae1baf24aaca89671affc52`
-    getData(zipURL);
+    if (zipInput.value.length === 5) {
+        let zipURL = `https://api.openweathermap.org/data/2.5/weather?zip=${zipInput.value},us&appid=3800df40eae1baf24aaca89671affc52`
+        getData(zipURL);
+    } else {
+        alert('Please enter a valid zip code');
+    }
 }
 
 function reset() {
