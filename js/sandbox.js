@@ -47,6 +47,7 @@ function createHeaderElements() {
     zipInput.setAttribute('type','text');
     zipInput.setAttribute('placeholder','zipcode');
     zipInput.setAttribute('class','col');
+    zipInput.setAttribute('id','zipInput');
     createButton('Submit','mainBtn');
     headerRow.appendChild(zipInput);
     createButton('Reset','resetBtn');
@@ -71,35 +72,38 @@ function createMainContent() {
     createElement('div', 'city', 'row', '');
     createElement('div', 'cityHeader', 'col-12', '', 'city');
     createElement('h3', '', '', 'City', 'cityHeader');
-    createElement('div', 'cityText', 'col', 'City Name', 'cityHeader');
+    createElement('div', 'cityText', 'col', '', 'cityHeader');
     createElement('div', 'tempBox', 'row', '');
     createElement('div', 'tempCol', 'col-12', '', 'tempBox');
     createElement('h3', '', '', 'Temperature', 'tempCol');
     createElement('div', 'kelBox', 'col', 'Kelvin', 'tempBox');
     createElement('div', 'celBox', 'col', 'Celcius', 'tempBox');
     createElement('div', 'fahrBox', 'col', 'Fahrenheit', 'tempBox');
-    createElement('div', 'kelvinTemp', 'col', 'temp', 'kelBox');
-    createElement('div', 'celTemp', 'col', 'temp', 'celBox');
-    createElement('div', 'fahrTemp', 'col', 'temp', 'fahrBox');
+    createElement('div', 'kelvinTemp', 'col', '', 'kelBox');
+    createElement('div', 'celTemp', 'col', '', 'celBox');
+    createElement('div', 'fahrTemp', 'col', '', 'fahrBox');
     createElement('div', 'conditionBox', 'row', '');
     createElement('div', 'conditionHeader', 'col-12', '', 'conditionBox');
     createElement('h3', '', '', 'Condition', 'conditionHeader');
-    createElement('div', 'condText', 'col', 'Current Weather', 'conditionBox');
+    createElement('div', 'condText', 'col', '', 'conditionBox');
 
 
 }
 
 
 // need value extracted at the moment the button is clicked, not on page load.
-let zipURL = 'https://api.openweathermap.org/data/2.5/weather?zip=40511,us&appid=3800df40eae1baf24aaca89671affc52'
-function getData(url) {
-    createMainContent();
-    axios.get(url)
-        .then((data) => {
-            displayData(data);
-            // console.log(data.data.name);
 
-        })
+function getData(url) {
+    try {
+        axios.get(url)
+            .then((data) => {
+                createMainContent();
+                displayData(data);
+            })
+        }
+    catch (err) {
+        alert('Please enter a valid zip code');
+    }
 }
 
 // function createIcon(data) {
@@ -134,6 +138,20 @@ function weatherData(data) {
     this.weather = data.data.weather.description;
 }
 
+function zipCodeSubmit() {
+    if (document.getElementById('mainContent')) {
+    document.getElementById('mainContent').remove();
+    }
+    let zipURL = `https://api.openweathermap.org/data/2.5/weather?zip=${zipInput.value},us&appid=3800df40eae1baf24aaca89671affc52`
+    getData(zipURL);
+}
+
+function reset() {
+    document.getElementById('mainContent').remove();
+    zipInput.value = '';
+}
+
+
 function convertToCel(num) {
     let celNum = Math.floor(num - 273.15);
     document.getElementById('celTemp').textContent = celNum;
@@ -151,3 +169,8 @@ function init() {
 }
 
 init();
+
+
+document.getElementById('mainBtn').onclick = zipCodeSubmit;
+
+document.getElementById('resetBtn').onclick = reset;
