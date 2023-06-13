@@ -73,7 +73,7 @@ function getData(url) {
             })
         }
     catch (err) {
-        alert('Please enter a valid zip code');
+        alert('Oops, Something went wrong');
     }
 }
 
